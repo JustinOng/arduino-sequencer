@@ -28,10 +28,11 @@ class Sequencer {
     void set_reset_time(TIME_VARTYPE time);
 
     void add(TIME_VARTYPE time, void *data);
+    void execute(STEP_COUNT_VARTYPE step);
   private:
     uint32_t start_time = 0;
     uint32_t pause_time = 0;
-    
+
     uint8_t active = false;
     // if reset is true, next call to start() will update start_time and step
     uint8_t is_reset = true;

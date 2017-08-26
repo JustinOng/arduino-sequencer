@@ -54,12 +54,16 @@ void Sequencer::set_callback(void (*_callback)(void *data)) {
   callback = _callback;
 }
 
+void Sequencer::execute(STEP_COUNT_VARTYPE step) {
+  callback(steps[step].data);
+}
+
 void Sequencer::loop(void) {
   if (callback == NULL || !active) return;
 
   for(STEP_COUNT_VARTYPE i = 0; i < step_count; i++) {
     if (!steps[i].executed && (millis() - start_time) > steps[i].time) {
-      callback(steps[i].data);
+      execute(i);
       steps[i].executed = true;
     }
   }
