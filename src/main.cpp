@@ -41,5 +41,18 @@ void setup() {
 }
 
 void loop() {
+  if (Serial.available()) {
+    switch(Serial.read()) {
+      case 'a':
+        sequencer.stop();
+        break;
+      case 's':
+        sequencer.start();
+        break;
+      case 'r':
+        sequencer.reset();
+        break;
+    }
+  }
   sequencer.loop();
 }

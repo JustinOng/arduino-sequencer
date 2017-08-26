@@ -30,6 +30,8 @@ class Sequencer {
     void add(TIME_VARTYPE time, void *data);
   private:
     uint32_t start_time = 0;
+    uint32_t pause_time = 0;
+    
     uint8_t active = false;
     // if reset is true, next call to start() will update start_time and step
     uint8_t is_reset = true;

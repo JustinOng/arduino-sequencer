@@ -9,16 +9,26 @@ void Sequencer::start(void) {
     start_time = millis();
     is_reset = false;
   }
+  else {
+    start_time += (millis() - pause_time);
+  }
 
   active = true;
 }
 
 void Sequencer::stop(void) {
-  active = false;
+  if (active) {
+    active = false;
+    pause_time = millis();
+  }
 }
 
 void Sequencer::reset(void) {
+  if (!loop_forever) {
+    active = false;
+  }
   is_reset = true;
+  start_time = millis();
 
   for(STEP_COUNT_VARTYPE i = 0; i < step_count; i++) {
     steps[i].executed = false;
