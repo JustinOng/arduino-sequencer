@@ -8,7 +8,7 @@
 #define STEP_COUNT_VARTYPE uint8_t
 #define STEP_COUNT_MAX 100
 
-struct Step {
+struct Sequencer_Step {
   TIME_VARTYPE time;
   uint8_t executed = false;
   void *data;
@@ -43,7 +43,7 @@ class Sequencer {
     void (*callback)(void *data) = NULL;
 
     STEP_COUNT_VARTYPE step_count = 0;
-    Step steps[STEP_COUNT_MAX];
+    Sequencer_Step steps[STEP_COUNT_MAX];
 };
 
 #endif
