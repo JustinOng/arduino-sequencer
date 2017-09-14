@@ -29,6 +29,8 @@ class Sequencer {
 
     void add(TIME_VARTYPE time, void *data);
     void execute(STEP_COUNT_VARTYPE step);
+
+    void clear();
   private:
     uint32_t start_time = 0;
     uint32_t pause_time = 0;

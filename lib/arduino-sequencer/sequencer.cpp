@@ -58,6 +58,10 @@ void Sequencer::execute(STEP_COUNT_VARTYPE step) {
   callback(steps[step].data);
 }
 
+void Sequencer::clear() {
+  step_count = 0;
+}
+
 void Sequencer::loop(void) {
   if (callback == NULL || !active) return;
 

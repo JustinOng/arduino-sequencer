@@ -94,3 +94,6 @@ This function needs to be called as often as possible in your void loop() to ens
 
 ## Sequencer::set_loop_forever(uint8_t *yes*)
 *yes* - 1 or 0 to denote sequence looping forever or not respectively
+
+## Sequencer::clear()
+Clears all saved steps
