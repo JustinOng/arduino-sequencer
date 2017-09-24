@@ -33,6 +33,7 @@ void Sequencer::reset(void) {
   for(STEP_COUNT_VARTYPE i = 0; i < step_count; i++) {
     steps[i].executed = false;
   }
+  last_executed_step = 0;
 }
 
 void Sequencer::set_loop_forever(uint8_t yes) {
@@ -62,6 +63,10 @@ void Sequencer::clear() {
   step_count = 0;
 }
 
+uint8_t Sequencer::get_last_executed_step() {
+  return last_executed_step;
+}
+
 void Sequencer::loop(void) {
   if (callback == NULL || !active) return;
 
@@ -69,6 +74,7 @@ void Sequencer::loop(void) {
     if (!steps[i].executed && (millis() - start_time) > steps[i].time) {
       execute(i);
       steps[i].executed = true;
+      last_executed_step = i;
     }
   }
 

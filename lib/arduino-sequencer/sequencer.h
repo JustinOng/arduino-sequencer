@@ -6,7 +6,7 @@
 #define TIME_VARTYPE uint16_t
 
 #define STEP_COUNT_VARTYPE uint8_t
-#define STEP_COUNT_MAX 100
+#define STEP_COUNT_MAX 20
 
 struct Sequencer_Step {
   TIME_VARTYPE time;
@@ -31,6 +31,8 @@ class Sequencer {
     void execute(STEP_COUNT_VARTYPE step);
 
     void clear();
+
+    uint8_t get_last_executed_step();
   private:
     uint32_t start_time = 0;
     uint32_t pause_time = 0;
@@ -39,6 +41,7 @@ class Sequencer {
     // if reset is true, next call to start() will update start_time and step
     uint8_t is_reset = true;
     uint8_t loop_forever = false;
+    uint8_t last_executed_step = 0;
 
     TIME_VARTYPE reset_time = -1;
 
